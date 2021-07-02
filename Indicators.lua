@@ -61,7 +61,7 @@ local function get_speclist()
 
         ::continue::
     end
-	table.insert(spectatorsList, "test spec");
+
 	return { longestName, spectatorsList };
 end
 
