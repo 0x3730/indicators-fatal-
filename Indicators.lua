@@ -135,7 +135,7 @@ local function get_keylist()
 	
 	if localPlayer and localPlayer:is_alive() then
 		local weaponHandle = localPlayer:get_var_handle("CBaseCombatCharacter->m_hActiveWeapon");
-		if weapondHandle then
+		if weaponHandle then
 			local eW = entity_list:get_from_handle(weaponHandle);
 			if eW then
 				localWeaponId = eW:get_class_id();
