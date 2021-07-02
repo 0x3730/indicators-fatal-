@@ -134,7 +134,13 @@ local function get_keylist()
 	local localWeaponId = 0;
 	
 	if localPlayer and localPlayer:is_alive() then
-		localWeaponId = entity_list:get_from_handle(localPlayer:get_var_handle("CBaseCombatCharacter->m_hActiveWeapon")):get_class_id();
+		local weaponHandle = localPlayer:get_var_handle("CBaseCombatCharacter->m_hActiveWeapon");
+		if weapondHandle then
+			local eW = entity_list:get_from_handle(weaponHandle);
+			if eW then
+				localWeaponId = eW:get_class_id();
+			end
+		end
 	end
 	
 	if menu:get_reference("Rage", "Aimbot", "Aimbot", "Force Safepoint"):get_bool() then
