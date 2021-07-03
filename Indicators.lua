@@ -206,10 +206,6 @@ end
 local function draw_keybinds()
 	local keybindsList = get_keylist();
 	
-	if not keybindsList[1] then
-		return;
-	end
-
 	local footerTextSize = render:text_size(fonts, "keybinds").x;
 	local paddings = 5;
 	local size_x = footerTextSize * 3 + paddings * 2;
