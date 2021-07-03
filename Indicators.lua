@@ -7,7 +7,6 @@ local config = fatality.config
 local render = fatality.render
 local callbacks = fatality.callbacks;
 local screenSize = render:screen_size();
-local entity_list = csgo.interface_handler:get_entity_list();
 
 local slist_x = config:add_item("slist_x", 0);
 local guiMarginSlider = menu:add_slider("Spectator List (x)", "visuals", "misc", "various", slist_x, 0, screenSize.x, 1);
@@ -130,13 +129,14 @@ end
 
 local function get_keylist()
 	local keybindsList = { };
-	local localPlayer = csgo.interface_handler:get_entity_list():get_localplayer();
+	local entityList = csgo.interface_handler:get_entity_list();
+	local localPlayer = entityList:get_localplayer();
 	local localWeaponId = 0;
 	
 	if localPlayer and localPlayer:is_alive() then
 		local weaponHandle = localPlayer:get_var_handle("CBaseCombatCharacter->m_hActiveWeapon");
 		if weaponHandle then
-			local eW = entity_list:get_from_handle(weaponHandle);
+			local eW = entityList:get_from_handle(weaponHandle);
 			if eW then
 				localWeaponId = eW:get_class_id();
 			end
